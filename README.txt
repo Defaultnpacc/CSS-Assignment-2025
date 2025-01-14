@@ -8,7 +8,7 @@ hospital-website/
 ├── public/                  # Static assets like images, icons, etc.
 │   ├── logo.png
 │   └── doctors/
-│       └── dr_smith.jpg
+│       └── dr_ravi.jpg
 │
 ├── src/
 │   ├── components/          # Reusable components
