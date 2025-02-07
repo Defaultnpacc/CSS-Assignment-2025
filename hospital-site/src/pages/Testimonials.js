@@ -1,12 +1,9 @@
-import { useEffect } from 'react';
 import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css'; // Importing OwlCarousel CSS
+import 'owl.carousel'; // Importing OwlCarousel JS
 
 export const Testimonials = () => {
-    useEffect(() => {
-        require('owl.carousel/dist/assets/owl.carousel.css');
-        require('owl.carousel');
-    }, []);
-
+    // Testimonials data
     const testimonials = [
         {
             name: "Ethan",
