@@ -6,10 +6,10 @@ import Header from "../../components/Header"; // Update the import path for Head
 
 const Team = () => {
     const teamMembers = [
-        { name: "Dr. Ethan Lim", specialty: "Pregnancy Care", imgSrc: "team-1.jpg", description: "Doctorate in looking at kids" },
-        { name: "Dr. Nick Gru", specialty: "Dental Care", imgSrc: "team-2.jpg", description: "Doctorate in oral health" },
-        { name: "Dr. Mike Oxlong", specialty: "Operation and Surgery", imgSrc: "team-3.jpg", description: "Doctorate in operation" },
-        { name: "Dr. Ben Dover", specialty: "Health Checkup", imgSrc: "team-3.jpg", description: "Doctorate in health check-ups" }
+        { name: "Dr. Ethan Lim", specialty: "Pregnancy Care", imgSrc: "/team-1.jpg", description: "Doctorate in looking at kids" },
+        { name: "Dr. Nick Gru", specialty: "Dental Care", imgSrc: "/team-2.jpg", description: "Doctorate in oral health" },
+        { name: "Dr. Mike Oxlong", specialty: "Operation and Surgery", imgSrc: "/team-3.jpg", description: "Doctorate in operation" },
+        { name: "Dr. Ben Dover", specialty: "Health Checkup", imgSrc: "/team-3.jpg", description: "Doctorate in health check-ups" }
     ];
 
     return (
