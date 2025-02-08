@@ -75,9 +75,9 @@ const BlogPage = () => {
         </div>
       </div>
 
-      <div className="container-fluid py-5">
+      <div className="container-fluid py-5" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }}>
         <div className="container">
-          <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px', border: '2px solid #333', padding: '10px', borderRadius: '5px' }}>
+          <div className="text-center mx-auto mb-5">
             <h5 className="d-inline-block text-primary text-uppercase">Add New Blog Post</h5>
           </div>
           <form>
