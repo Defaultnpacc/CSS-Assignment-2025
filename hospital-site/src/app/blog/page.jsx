@@ -67,8 +67,8 @@ const BlogPage = () => {
           <div className="row g-5 justify-content-center">
             {/* Example Blog Post Item */}
             {posts.map((post, idx) => (
-              <div className="col-xl-4 col-lg-6" key={idx}>
-                <div className="bg-light rounded overflow-hidden">
+              <div className="col-xl-4 col-lg-6 d-flex align-items-stretch" key={idx}>
+                <div className="bg-light rounded overflow-hidden w-100">
                   <Image className="img-fluid w-100" src={post.img} alt={post.title} width={500} height={300} />
                   <div className="p-4">
                     <h3 className="d-block mb-3">{post.title}</h3>
