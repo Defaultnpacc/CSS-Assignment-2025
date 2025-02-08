@@ -34,27 +34,6 @@ const BlogPage = () => {
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Medical Blog, Health, Wellness" name="keywords" />
         <meta content="Stay updated with the latest health tips, medical news, and wellness advice." name="description" />
-
-        {/* Favicon */}
-        <link href="/favicon.ico" rel="icon" />
-
-        {/* Google Web Fonts */}
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-
-        {/* Icon Font Stylesheet */}
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-
-        {/* Libraries Stylesheet */}
-        <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-        <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-        {/* Customized Bootstrap Stylesheet */}
-        <link href="/css/bootstrap.min.css" rel="stylesheet" />
-
-        {/* Template Stylesheet */}
-        <link href="/css/style.css" rel="stylesheet" />
       </Head>
 
       {/* Blog Start */}
@@ -65,11 +44,12 @@ const BlogPage = () => {
             <h1 className="display-4">Our Latest Medical Blog Posts</h1>
           </div>
           <div className="row g-5 justify-content-center">
-            {/* Example Blog Post Item */}
             {posts.map((post, idx) => (
               <div className="col-12 col-md-8" key={idx}>
-                <div className="bg-light rounded overflow-hidden mx-auto" style={{ maxWidth: '600px' }}>
-                  <Image className="img-fluid" src={post.img} alt={post.title} width={600} height={350} />
+                <div className="bg-light rounded overflow-hidden mx-auto text-center" style={{ maxWidth: '600px' }}>
+                  <div className="d-flex justify-content-center">
+                    <Image className="img-fluid" src={post.img} alt={post.title} width={600} height={350} />
+                  </div>
                   <div className="p-4">
                     <h3 className="d-block mb-3">{post.title}</h3>
                     <p className="m-0">{post.description}</p>
@@ -102,22 +82,24 @@ const BlogPage = () => {
             <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Add New Blog Post</h5>
           </div>
           <div className="row g-5 justify-content-center">
-            <div className="col-12">
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="title" className="form-label">Title</label>
-                  <input type="text" className="form-control" id="title" name="title" value={newPost.title} onChange={handleInputChange} />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="description" className="form-label">Description</label>
-                  <textarea className="form-control" id="description" name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="img" className="form-label">Image URL</label>
-                  <input type="text" className="form-control" id="img" name="img" value={newPost.img} onChange={handleInputChange} />
-                </div>
-                <button type="button" className="btn btn-primary" onClick={handleAddPost}>Add Post</button>
-              </form>
+            <div className="col-12 col-md-8">
+              <div className="border p-4 rounded bg-light shadow">
+                <form>
+                  <div className="mb-3">
+                    <label htmlFor="title" className="form-label">Title</label>
+                    <input type="text" className="form-control" id="title" name="title" value={newPost.title} onChange={handleInputChange} />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="description" className="form-label">Description</label>
+                    <textarea className="form-control" id="description" name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="img" className="form-label">Image URL</label>
+                    <input type="text" className="form-control" id="img" name="img" value={newPost.img} onChange={handleInputChange} />
+                  </div>
+                  <button type="button" className="btn btn-primary w-100" onClick={handleAddPost}>Add Post</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
