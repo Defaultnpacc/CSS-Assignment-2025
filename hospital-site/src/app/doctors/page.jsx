@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Header from "../../components/Header"; // Update the import path for Header component
 
@@ -48,6 +48,32 @@ const TeamMember = ({ name, specialty, imgSrc, description }) => {
                 <a className="text-blue-500 mx-2" href="#"><i className="fab fa-facebook-f"></i></a>
                 <a className="text-blue-500 mx-2" href="#"><i className="fab fa-linkedin-in"></i></a>
             </div>
+        </div>
+    );
+};
+
+// Add the drop-down menu component
+const DropdownMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <div className="relative">
+            <button className="bg-blue-500 text-white p-2 rounded" onClick={toggleMenu}>Useful Pages</button>
+            {isOpen && (
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-10">
+                    <ul className="list-none p-2">
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Test</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Home Page</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Doctors</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Appointment</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Testimonials</a></li>
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };
