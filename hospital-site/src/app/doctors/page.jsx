@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Header from "../../components/Header"; // Update the import path for Header component
+import Header from "../../components/Header"; // Correct the import path for Header component
 
 const Team = () => {
     const teamMembers = [
