@@ -67,9 +67,6 @@ const BlogPage = () => {
                 </div>
               </div>
             ))}
-            <div className="col-12 text-center">
-              <button className="btn btn-primary py-3 px-5">Load More</button>
-            </div>
           </div>
         </div>
       </div>
