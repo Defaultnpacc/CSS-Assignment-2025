@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react'; // Import React, useState, and useEffect
 import Header from '../../components/Header'; // Import Header component
+import axios from 'axios'; // Import axios for data fetching
 
 const AboutPage = () => { // Define AboutPage component
   const [formData, setFormData] = useState({ // Define form data state
@@ -12,6 +13,7 @@ const AboutPage = () => { // Define AboutPage component
   });
   const [errors, setErrors] = useState({});
   const [popupMessage, setPopupMessage] = useState('');
+  const [doctors, setDoctors] = useState([]); // Define doctors state
 
   useEffect(() => {
     if (popupMessage) {
@@ -21,6 +23,31 @@ const AboutPage = () => { // Define AboutPage component
       return () => clearTimeout(timer);
     }
   }, [popupMessage]);
+
+  useEffect(() => {
+    // Fetch doctor information from an external API
+    const fetchDoctors = async () => {
+      try {
+        const response = await axios.get('https://api.example.com/doctors');
+        setDoctors(response.data.doctors);
+      } catch (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error('Error response:', error.response.data);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error('Error request:', error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error('Error message:', error.message);
+        }
+        console.error('Error config:', error.config);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
 
   const handleChange = (e) => { // Handle input change
     const { name, value } = e.target;
@@ -111,6 +138,22 @@ const AboutPage = () => { // Define AboutPage component
             </div>
             <button type="submit" className="bg-blue-900 text-white p-2 rounded">Submit</button>
           </form>
+        </div>
+        <div className="mt-4 w-full max-w-4xl"> {/* Doctors section */}
+          <h2 className="text-xl font-semibold mb-2">Our Doctors</h2>
+          {doctors.length > 0 ? (
+            <ul>
+              {doctors.map((doctor, index) => (
+                <li key={index} className="mb-4">
+                  <h3 className="text-xl font-semibold">{doctor.name}</h3>
+                  <p>Specialty: {doctor.specialty}</p>
+                  <p>Contact: {doctor.contact}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No doctor information available at the moment.</p>
+          )}
         </div>
         <div className="mt-4"> {/* Google Maps iframe */}
           <h2 className="text-xl font-semibold mb-2">Our Location</h2>

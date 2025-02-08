@@ -6,11 +6,13 @@ import Image from "next/image"; // Import Image component
 import Header from "../../components/Header"; // Import Header component
 import Modal from "../../components/Modal"; // Import Modal component
 import Carousel from "../../components/Carousel"; // Import Carousel component
+import axios from 'axios'; // Import axios for data fetching
 
 export default function HomePage() { // Define HomePage component
   const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Define isVideoPlaying state
   const [isModalOpen, setIsModalOpen] = useState(false); // Define isModalOpen state
   const [isMusicPlaying, setIsMusicPlaying] = useState(false); // Define isMusicPlaying state
+  const [news, setNews] = useState([]); // Define news state
 
   useEffect(() => { // Load user preferences from localStorage
     const savedVideoState = localStorage.getItem('isVideoPlaying');
@@ -34,6 +36,40 @@ export default function HomePage() { // Define HomePage component
       };
     }
   }, [isMusicPlaying]);
+
+  const fetchNews = async () => {
+    try {
+      const response = await axios.get('https://newsapi.org/v2/top-headlines', {
+        params: {
+          category: 'health',
+          apiKey: 'dd5e21916cf24e5b874ceb0f671e2b8a' // My News API key
+        }
+      });
+      console.log('API Response:', response.data); // Log the API response
+      setNews(response.data.articles);
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error('Error response:', error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('Error request:', error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error message:', error.message);
+      }
+      console.error('Error config:', error.config);
+    }
+  };
+
+  useEffect(() => {
+    fetchNews(); // Initial fetch
+
+    const intervalId = setInterval(fetchNews, 300000); // Refresh every 5 minutes
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center"> {/* Page container */}
@@ -106,6 +142,27 @@ export default function HomePage() { // Define HomePage component
         </section>
         <section className="mt-8"> {/* Carousel section */}
           <Carousel />
+        </section>
+        <hr className="my-8 w-full border-t-2 border-gray-300" /> {/* Separator line */}
+        <section className="mt-8 w-full max-w-4xl"> {/* News section */}
+          <h2 className="text-2xl font-bold mb-4">Latest Healthcare News</h2>
+          <button onClick={fetchNews} className="bg-blue-900 text-white p-2 rounded mb-4">Refresh News</button>
+          {news.length > 0 ? (
+            <ul>
+              {news.map((article, index) => (
+                <li key={index} className="mb-4">
+                  <h3 className="text-xl font-semibold">{article.title}</h3>
+                  <p>{article.description}</p>
+                  <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-900 underline">
+                    Read more
+                  </a>
+                  <hr className="my-4 w-full border-t-2 border-gray-300" /> {/* Separator line between news items */}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No news available at the moment.</p>
+          )}
         </section>
       </main>
       <footer className="bg-blue-900 text-white p-4 w-full text-center"> {/* Footer */}
