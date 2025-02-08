@@ -73,9 +73,7 @@ const BlogPage = () => {
         <div className="container">
           <nav className="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
             <Link href="/" passHref>
-              <a className="navbar-brand">
-                <h1 className="m-0 text-uppercase text-primary"><i className="fa fa-clinic-medical me-2"></i>Medinova</h1>
-              </a>
+              <h1 className="navbar-brand m-0 text-uppercase text-primary"><i className="fa fa-clinic-medical me-2"></i>Medinova</h1>
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
               <span className="navbar-toggler-icon"></span>
@@ -83,42 +81,42 @@ const BlogPage = () => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <div className="navbar-nav ms-auto py-0">
                 <Link href="/" passHref>
-                  <a className="nav-item nav-link">Home</a>
+                  <span className="nav-item nav-link">Home</span>
                 </Link>
                 <Link href="/about" passHref>
-                  <a className="nav-item nav-link">About</a>
+                  <span className="nav-item nav-link">About</span>
                 </Link>
                 <Link href="/service" passHref>
-                  <a className="nav-item nav-link">Service</a>
+                  <span className="nav-item nav-link">Service</span>
                 </Link>
                 <Link href="/price" passHref>
-                  <a className="nav-item nav-link">Pricing</a>
+                  <span className="nav-item nav-link">Pricing</span>
                 </Link>
                 <div className="nav-item dropdown">
                   <a href="#" className="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                   <div className="dropdown-menu m-0">
                     <Link href="/blog" passHref>
-                      <a className="dropdown-item active">Blog Grid</a>
+                      <span className="dropdown-item active">Blog Grid</span>
                     </Link>
                     <Link href="/detail" passHref>
-                      <a className="dropdown-item">Blog Detail</a>
+                      <span className="dropdown-item">Blog Detail</span>
                     </Link>
                     <Link href="/team" passHref>
-                      <a className="dropdown-item">The Team</a>
+                      <span className="dropdown-item">The Team</span>
                     </Link>
                     <Link href="/testimonial" passHref>
-                      <a className="dropdown-item">Testimonial</a>
+                      <span className="dropdown-item">Testimonial</span>
                     </Link>
                     <Link href="/appointment" passHref>
-                      <a className="dropdown-item">Appointment</a>
+                      <span className="dropdown-item">Appointment</span>
                     </Link>
                     <Link href="/search" passHref>
-                      <a className="dropdown-item">Search</a>
+                      <span className="dropdown-item">Search</span>
                     </Link>
                   </div>
                 </div>
                 <Link href="/contact" passHref>
-                  <a className="nav-item nav-link">Contact</a>
+                  <span className="nav-item nav-link">Contact</span>
                 </Link>
               </div>
             </div>
@@ -139,7 +137,7 @@ const BlogPage = () => {
             {['Understanding the Ageing Population', 'Raising Cancer Awareness', 'Combatting Infectious Diseases'].map((title, idx) => (
               <div className="col-xl-4 col-lg-6" key={idx}>
                 <Link href={`/detail?post=${idx + 1}`} passHref>
-                  <a className="bg-light rounded overflow-hidden text-decoration-none">
+                  <div className="bg-light rounded overflow-hidden text-decoration-none">
                     <img className="img-fluid w-100" src={`img/blog-${idx + 1}.jpg`} alt={title} />
                     <div className="p-4">
                       <h3 className="d-block mb-3">{title}</h3>
@@ -155,7 +153,7 @@ const BlogPage = () => {
                         <small className="ms-3"><i className="far fa-comment text-primary me-1"></i>45</small>
                       </div>
                     </div>
-                  </a>
+                  </div>
                 </Link>
               </div>
             ))}
@@ -182,22 +180,22 @@ const BlogPage = () => {
               <h4 className="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Quick Links</h4>
               <div className="d-flex flex-column justify-content-start">
                 <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Home</a>
+                  <span className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Home</span>
                 </Link>
                 <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>About Us</a>
+                  <span className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>About Us</span>
                 </Link>
                 <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Our Services</a>
+                  <span className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Our Services</span>
                 </Link>
                 <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Meet The Team</a>
+                  <span className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Meet The Team</span>
                 </Link>
                 <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Latest Blog</a>
+                  <span className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Latest Blog</span>
                 </Link>
                 <Link href="#" passHref>
-                  <a className="text-light"><i className="fa fa-angle-right me-2"></i>Contact</a>
+                  <span className="text-light"><i className="fa fa-angle-right me-2"></i>Contact</span>
                 </Link>
               </div>
             </div>
