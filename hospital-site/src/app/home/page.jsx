@@ -1,20 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Header from "../../components/Header";
+import Carousel from "../../components/Carousel";
+import Modal from "../../components/Modal";
 
 export default function HomePage() {
+  // State variables
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newsArticles, setNewsArticles] = useState([]);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const audioRef = useRef(null);
+
+  // Fetch news articles on component mount
+  useEffect(() => {
+    fetchNews();
+  }, []);
+
+  // Function to fetch news articles
+  const fetchNews = () => {
+    fetch(`https://newsapi.org/v2/top-headlines?category=health&apiKey=dd5e21916cf24e5b874ceb0f671e2b8a`)
+      .then(response => response.json())
+      .then(data => {
+        setNewsArticles(data.articles);
+        setIsPopupVisible(true);
+        setTimeout(() => setIsPopupVisible(false), 2000);
+      })
+      .catch(error => console.error("Error fetching news:", error));
+  };
+
+  // Function to toggle audio playback
+  const handleToggleAudio = () => {
+    if (audioRef.current) {
+      if (isAudioPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsAudioPlaying(!isAudioPlaying);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white text-gray-800">
-      <header className="bg-blue-900 text-white p-4">
-        <h1 className="text-3xl font-bold">KYS General Hospital</h1>
-      </header>
+      <Header />
+      <audio ref={audioRef} src="/bgm.mp3" loop />
       <main className="p-8 sm:p-20">
-        <section className="mb-12 relative flex justify-center" style={{ marginBottom: '2rem' }}>
+        {/* Video/Image Section */}
+        <section className="mb-12 flex justify-center">
           {isVideoPlaying ? (
-            <div className="w-full h-auto rounded-lg shadow-lg" style={{ width: '600px', height: '400px' }}>
+            <div className="w-full h-auto rounded-lg overflow-hidden" style={{ width: '600px', height: '400px' }}>
               <iframe
                 width="600"
                 height="400"
@@ -27,13 +65,17 @@ export default function HomePage() {
               ></iframe>
             </div>
           ) : (
-            <div className="relative cursor-pointer" onClick={() => setIsVideoPlaying(true)} style={{ width: '600px', height: '400px' }}>
+            <div
+              className="relative cursor-pointer"
+              onClick={() => setIsVideoPlaying(true)}
+              style={{ width: '600px', height: '400px' }}
+            >
               <Image
                 src="/about.png"
                 alt="About"
                 width={600}
                 height={400}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-lg w-full"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <button className="bg-white p-2 rounded-full shadow-lg">
@@ -44,14 +86,29 @@ export default function HomePage() {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-5.197-3.03A1 1 0 008 9v6a1 1 0 001.555.832l5.197-3.03a1 1 0 000-1.664z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14.752 11.168l-5.197-3.03A1 1 0 008 9v6a1 1 0 001.555.832l5.197-3.03a1 1 0 000-1.664z"
+                    />
                   </svg>
                 </button>
               </div>
             </div>
           )}
         </section>
-        <section className="text-center sm:text-left">
+
+        <hr className="my-8 border-transparent" /> {/* Invisible horizontal line */}
+
+        {/* Text Content */}
+        <section className="text-center sm:text-left max-w-3xl mx-auto">
+          <button
+            onClick={handleToggleAudio}
+            className="bg-blue-900 text-white p-2 rounded mb-4"
+          >
+            {isAudioPlaying ? "Stop BGM" : "Play BGM"}
+          </button>
           <h2 className="text-2xl font-bold mb-4">Welcome to KYS General Hospital</h2>
           <p className="mb-4">
             At KYS General Hospital, we are committed to providing the highest quality healthcare services to our community. Our team of experienced professionals is dedicated to ensuring your well-being and comfort.
@@ -63,10 +120,65 @@ export default function HomePage() {
             Thank you for choosing KYS General Hospital. We look forward to serving you and your family.
           </p>
         </section>
+
+        {/* Modal Button */}
+        <section className="text-center mb-12"> {/* Add margin-bottom */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-blue-900 text-white p-2 rounded mt-4"
+          >
+            More Information
+          </button>
+        </section>
+
+        {/* Carousel */}
+        <section className="mb-12">
+          <Carousel />
+        </section>
+
+        <hr className="my-8" />
+
+        {/* News Section */}
+        <section className="mt-8">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold">Latest Health News</h2>
+            <button
+              onClick={fetchNews}
+              className="bg-blue-900 text-white p-2 rounded"
+            >
+              Refresh News
+            </button>
+          </div>
+          {isPopupVisible && (
+            <div className="bg-green-500 text-black p-2 rounded mb-4">
+              Successfully refreshed
+            </div>
+          )}
+          {newsArticles.map((article, index) => (
+            <div key={index} className="mb-4">
+              <h3 className="text-xl font-semibold">{article.title}</h3>
+              <p className="text-gray-600">{article.description}</p>
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-900 underline"
+              >
+                Read more
+              </a>
+              {index < newsArticles.length - 1 && <hr className="my-4" />}
+            </div>
+          ))}
+        </section>
       </main>
+
+      {/* Footer */}
       <footer className="bg-blue-900 text-white p-4 text-center">
         <p>&copy; 2025 KYS General Hospital. All rights reserved.</p>
       </footer>
+
+      {/* Modal */}
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 }

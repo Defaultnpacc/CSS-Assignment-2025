@@ -10,7 +10,10 @@ const Header = () => { // Define the Header component
                     <a href="/" className="mx-2">Home</a> {/* Home link */}
                     <a href="/about" className="mx-2">About</a> {/* About link */}
                     <a href="/services" className="mx-2">Services</a> {/* Services link */}
-                    <a href="/contact" className="mx-2">Contact</a> {/* Contact link */}
+                    <a href="/doctors" className="mx-2">Doctors</a> {/* Doctors link */}
+                    <a href="/appointment" className="mx-2">Appointment</a> {/* Appointment link */}
+                    <a href="/blog" className="mx-2">Blog</a> {/* Blog link */}
+                    <a href="/testimonials" className="mx-2">Testimonials</a> {/* Testimonials link */}
                 </nav>
             </div>
         </header>

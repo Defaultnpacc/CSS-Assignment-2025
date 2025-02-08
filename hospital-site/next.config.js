@@ -1,8 +1,8 @@
-module.exports = {
-  // ...existing code...
-  webpack(config, options) {
-    // ...existing code...
-    return config;
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    turbo: {},
   },
-  // ...existing code...
 };
+
+module.exports = nextConfig;

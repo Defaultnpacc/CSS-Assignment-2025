@@ -30,9 +30,9 @@ export default function Header() {
             Useful Pages
           </button>
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
               <Link href="/" legacyBehavior>
-                <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Test</a>
+                <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Home</a>
               </Link>
               <Link href="/home" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Home Page</a>

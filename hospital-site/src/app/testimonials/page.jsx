@@ -1,8 +1,10 @@
 import dynamic from 'next/dynamic';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import OwlCarouselClient from './OwlCarouselClient';
 
-const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
+// Remove the dynamic import as it is now in the client component
+// const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 export const Testimonials = () => {
     const testimonials = [
@@ -35,7 +37,7 @@ export const Testimonials = () => {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-lg-8">
-                        <OwlCarousel className="testimonial-carousel" items={1} autoplay loop nav>
+                        <OwlCarouselClient>
                             {testimonials.map((testimonial, index) => (
                                 <div className="testimonial-item text-center" key={index}>
                                     <div className="position-relative mb-5">
@@ -50,7 +52,7 @@ export const Testimonials = () => {
                                     <h6 className="fw-normal text-primary mb-3">{testimonial.role}</h6>
                                 </div>
                             ))}
-                        </OwlCarousel>
+                        </OwlCarouselClient>
                     </div>
                 </div>
             </div>

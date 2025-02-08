@@ -44,7 +44,6 @@ HOSPITAL-SITE
 │-- README.md               # Project documentation (this file)
 │-- tailwind.config.ts      # Tailwind CSS configuration
 │-- tsconfig.json           # TypeScript configuration
-
 ### Folders and Files
 
 - **css/**: Contains all the CSS files for styling the website.
