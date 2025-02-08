@@ -54,13 +54,13 @@ const BlogPage = () => {
 
         {/* Template Stylesheet */}
         <link href="css/style.css" rel="stylesheet" />
-      </Head>
+      </Head>   
 
       {/* Blog Start */}
       <div className="container-fluid py-5">
         <div className="container">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
-            <h2 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h2>
+            <h1 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h1>
             <h3 className="display-4">Our Latest Medical Blog Posts</h3>
           </div>
           <div className="row g-5">
