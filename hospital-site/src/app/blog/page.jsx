@@ -64,7 +64,7 @@ const BlogPage = () => {
             <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
             <h1 className="display-4">Our Latest Medical Blog Posts</h1>
           </div>
-          <div className="row g-5">
+          <div className="row g-5 justify-content-center">
             {/* Example Blog Post Item */}
             {posts.map((post, idx) => (
               <div className="col-xl-4 col-lg-6" key={idx}>
@@ -101,7 +101,7 @@ const BlogPage = () => {
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
             <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Add New Blog Post</h5>
           </div>
-          <div className="row g-5">
+          <div className="row g-5 justify-content-center">
             <div className="col-12">
               <form>
                 <div className="mb-3">
