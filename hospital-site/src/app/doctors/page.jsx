@@ -15,7 +15,8 @@ const Team = () => {
     return (
         <>
             <Header /> {/* Add the Header component here */}
-            <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center">
+            <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center relative">
+                <DropdownMenu /> {/* Add the DropdownMenu component here */}
                 <div className="container py-5">
                     <div className="text-center mx-auto mb-5" style={{ maxWidth: "500px" }}>
                         <h5 className="d-inline-block text-secondary text-uppercase border-bottom border-5">Our Doctors</h5>
@@ -61,10 +62,10 @@ const DropdownMenu = () => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative z-50">
             <button className="bg-blue-500 text-white p-2 rounded" onClick={toggleMenu}>Useful Pages</button>
             {isOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-10">
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-50">
                     <ul className="list-none p-2">
                         <li><a href="#" className="block p-2 hover:bg-gray-200">Test</a></li>
                         <li><a href="#" className="block p-2 hover:bg-gray-200">Home Page</a></li>
