@@ -76,7 +76,7 @@ const BlogPage = () => {
                   </div>
                   <div className="d-flex flex-column align-items-center border-top p-4">
                     <Image className="rounded-circle mb-2" src="/user.jpg" width={50} height={50} alt="User" style={{ display: 'block', margin: '0 auto' }} />
-                    <small>Dr. Jane Smith</small>
+                    <small>Dr. Chin Chin Chong</small>
                   </div>
                 </div>
               </div>
