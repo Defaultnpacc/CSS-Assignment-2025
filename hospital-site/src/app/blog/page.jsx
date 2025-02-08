@@ -1,6 +1,9 @@
+"use client"; // Add this directive
+
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Header from '../../components/Header'; // Import the Header component
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([
@@ -23,6 +26,7 @@ const BlogPage = () => {
 
   return (
     <>
+      <Header /> {/* Add the Header component here */}
       <Head>
         <meta charSet="utf-8" />
         <title>KYS General Hospital - Your Health Blog</title>
@@ -63,7 +67,7 @@ const BlogPage = () => {
             {/* Example Blog Post Item */}
             {posts.map((post, idx) => (
               <div className="col-xl-4 col-lg-6" key={idx}>
-                <Link href={`/detail?post=${idx + 1}`} passHref>
+                <Link href={`/detail?post=${idx + 1}`} passHref legacyBehavior>
                   <a className="bg-light rounded overflow-hidden text-decoration-none">
                     <img className="img-fluid w-100" src={post.img} alt={post.title} />
                     <div className="p-4">
