@@ -11,70 +11,66 @@ const AboutPage = () => { // Define AboutPage component
     email: '',
     message: ''
   });
-  const [errors, setErrors] = useState({});
-  const [popupMessage, setPopupMessage] = useState('');
+  const [errors, setErrors] = useState({}); // Define errors state
+  const [popupMessage, setPopupMessage] = useState(''); // Define popup message state
   const [doctors, setDoctors] = useState([]); // Define doctors state
 
-  useEffect(() => {
+  useEffect(() => { // Effect to clear popup message after 5 seconds
     if (popupMessage) {
       const timer = setTimeout(() => {
-        setPopupMessage('');
+        setPopupMessage(''); // Clear popup message
       }, 5000);
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer); // Cleanup timer
     }
   }, [popupMessage]);
 
-  useEffect(() => {
-    // Fetch doctor information from an external API
+  useEffect(() => { // Effect to fetch doctor information
     const fetchDoctors = async () => {
       try {
-        const response = await axios.get('https://api.example.com/doctors');
-        setDoctors(response.data.doctors);
+        const response = await axios.get('https://api.example.com/doctors'); // Fetch data from API
+        setDoctors(response.data.doctors); // Set doctors state
       } catch (error) {
+        // Handle errors
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           console.error('Error response:', error.response.data);
         } else if (error.request) {
-          // The request was made but no response was received
           console.error('Error request:', error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.error('Error message:', error.message);
         }
         console.error('Error config:', error.config);
       }
     };
 
-    fetchDoctors();
+    fetchDoctors(); // Call fetchDoctors function
   }, []);
 
   const handleChange = (e) => { // Handle input change
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value // Update form data state
     });
   };
 
-  const validateForm = () => {
+  const validateForm = () => { // Validate form data
     const newErrors = {};
     if (!formData.name) newErrors.name = 'Name is required';
     if (!formData.email) newErrors.email = 'Email is required';
     if (!formData.message) newErrors.message = 'Message is required';
-    return newErrors;
+    return newErrors; // Return validation errors
   };
 
   const handleSubmit = (e) => { // Handle form submission
     e.preventDefault();
-    const validationErrors = validateForm();
+    const validationErrors = validateForm(); // Validate form data
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      setPopupMessage('Please fill in required fields');
+      setErrors(validationErrors); // Set errors state
+      setPopupMessage('Please fill in required fields'); // Set popup message
     } else {
-      setErrors({});
-      setPopupMessage('Form submitted successfully');
-      console.log('Form submitted:', formData);
+      setErrors({}); // Clear errors state
+      setPopupMessage('Form submitted successfully'); // Set success message
+      console.log('Form submitted:', formData); // Log form data
     }
   };
 
@@ -82,7 +78,7 @@ const AboutPage = () => { // Define AboutPage component
     <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center"> {/* Page container */}
       {popupMessage && (
         <div className={`fixed top-0 left-0 right-0 p-4 text-center ${popupMessage === 'Form submitted successfully' ? 'bg-green-500 text-black' : 'bg-red-500 text-white'}`}>
-          {popupMessage}
+          {popupMessage} {/* Popup message */}
         </div>
       )}
       <Header /> {/* Header component */}
@@ -109,7 +105,7 @@ const AboutPage = () => { // Define AboutPage component
                 className={`w-full p-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded`}
                 required
               />
-              {errors.name && <p className="text-red-500 text-sm">* {errors.name}</p>}
+              {errors.name && <p className="text-red-500 text-sm">* {errors.name}</p>} {/* Name error */}
             </div>
             <div>
               <label htmlFor="email" className="block">Email:</label>
@@ -122,7 +118,7 @@ const AboutPage = () => { // Define AboutPage component
                 className={`w-full p-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded`}
                 required
               />
-              {errors.email && <p className="text-red-500 text-sm">* {errors.email}</p>}
+              {errors.email && <p className="text-red-500 text-sm">* {errors.email}</p>} {/* Email error */}
             </div>
             <div>
               <label htmlFor="message" className="block">Message:</label>
@@ -134,9 +130,9 @@ const AboutPage = () => { // Define AboutPage component
                 className={`w-full p-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded`}
                 required
               />
-              {errors.message && <p className="text-red-500 text-sm">* {errors.message}</p>}
+              {errors.message && <p className="text-red-500 text-sm">* {errors.message}</p>} {/* Message error */}
             </div>
-            <button type="submit" className="bg-blue-900 text-white p-2 rounded">Submit</button>
+            <button type="submit" className="bg-blue-900 text-white p-2 rounded">Submit</button> {/* Submit button */}
           </form>
         </div>
         <div className="mt-4 w-full max-w-4xl"> {/* Doctors section */}
@@ -152,7 +148,7 @@ const AboutPage = () => { // Define AboutPage component
               ))}
             </ul>
           ) : (
-            <p>No doctor information available at the moment.</p>
+            <p>No doctor information available at the moment.</p> {/* No doctors message */}
           )}
         </div>
         <div className="mt-4"> {/* Google Maps iframe */}

@@ -25,7 +25,7 @@ export default function HomePage() { // Define HomePage component
     localStorage.setItem('isVideoPlaying', JSON.stringify(isVideoPlaying));
   }, [isVideoPlaying]);
 
-  useEffect(() => {
+  useEffect(() => { // Play background music if isMusicPlaying is true
     if (isMusicPlaying) {
       const audio = new Audio('/bgm.mp3');
       audio.loop = true;
@@ -37,7 +37,7 @@ export default function HomePage() { // Define HomePage component
     }
   }, [isMusicPlaying]);
 
-  const fetchNews = async () => {
+  const fetchNews = async () => { // Fetch latest healthcare news from News API
     try {
       const response = await axios.get('https://newsapi.org/v2/top-headlines', {
         params: {
