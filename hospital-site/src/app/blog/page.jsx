@@ -91,7 +91,7 @@ const BlogPage = () => {
             </div>
             <div className="mb-3">
               <label htmlFor="img" className="form-label">Image URL:</label>
-              <input type="text" className="form-control border border-dark" id="img" name="img" value={newPost.img} onChange={handleInputChange} />
+              <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="img" name="img" value={newPost.img} onChange={handleInputChange} />
             </div>
             <button type="button" className="btn btn-primary w-100" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} onClick={handleAddPost}>Add Post</button>
           </form>
