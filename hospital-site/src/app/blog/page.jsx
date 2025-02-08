@@ -81,19 +81,29 @@ const BlogPage = () => {
             <h5 className="d-inline-block text-primary text-uppercase">Add New Blog Post</h5>
           </div>
           <form>
-            <div className="mb-3">
-              <label htmlFor="title" className="form-label">Title:</label>
-              <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="title" name="title" value={newPost.title} onChange={handleInputChange} />
+            <div className="row mb-3">
+              <div className="col-12">
+                <label htmlFor="title" className="form-label">Title:</label>
+                <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="title" name="title" value={newPost.title} onChange={handleInputChange} />
+              </div>
             </div>
-            <div className="mb-3">
-              <label htmlFor="description" className="form-label">Description:</label>
-              <textarea className="form-control border border-dark" id="description" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
+            <div className="row mb-3">
+              <div className="col-12">
+                <label htmlFor="description" className="form-label">Description:</label>
+                <textarea className="form-control border border-dark" id="description" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
+              </div>
             </div>
-            <div className="mb-3">
-              <label htmlFor="img" className="form-label">Image URL:</label>
-              <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="img" name="img" value={newPost.img} onChange={handleInputChange} />
+            <div className="row mb-3">
+              <div className="col-12">
+                <label htmlFor="img" className="form-label">Image URL:</label>
+                <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="img" name="img" value={newPost.img} onChange={handleInputChange} />
+              </div>
             </div>
-            <button type="button" className="btn btn-primary w-100" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} onClick={handleAddPost}>Add Post</button>
+            <div className="row">
+              <div className="col-12">
+                <button type="button" className="btn btn-primary w-100" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} onClick={handleAddPost}>Add Post</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
