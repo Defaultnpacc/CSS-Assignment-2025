@@ -35,7 +35,7 @@ const BlogPage = () => {
       <div className="container-fluid py-5">
         <div className="container text-center">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
-            <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
+            <title className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</title>
             <h1 className="display-4">Our Latest Medical Blog Posts</h1>
           </div>
           <div className="row g-5 justify-content-center">
