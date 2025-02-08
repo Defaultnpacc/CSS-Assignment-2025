@@ -61,7 +61,7 @@ const BlogPage = () => {
                     <p className="m-0">{post.description}</p>
                   </div>
                   <div className="d-flex flex-column align-items-center border-top p-4">
-                    <Image className="rounded-circle" src="/user.jpg" width={50} height={50} alt="User" />
+                    <Image className="rounded-circle mb-2" src="/user.jpg" width={50} height={50} alt="User" style={{ display: 'block', margin: '0 auto' }} />
                     <small>Dr. Jane Smith</small>
                     <div className="d-flex mt-2">
                       <small className="ms-3"><i className="far fa-eye text-primary me-1"></i>1,234</small>
@@ -82,18 +82,18 @@ const BlogPage = () => {
           </div>
           <form>
             <div className="mb-3">
-              <label htmlFor="title" className="form-label">Title</label>
+              <label htmlFor="title" className="form-label">Title:</label>
               <input type="text" className="form-control border border-dark" id="title" name="title" value={newPost.title} onChange={handleInputChange} />
             </div>
             <div className="mb-3">
-              <label htmlFor="description" className="form-label">Description</label>
+              <label htmlFor="description" className="form-label">Description:</label>
               <textarea className="form-control border border-dark" id="description" name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
             </div>
             <div className="mb-3">
-              <label htmlFor="img" className="form-label">Image URL</label>
+              <label htmlFor="img" className="form-label">Image URL:</label>
               <input type="text" className="form-control border border-dark" id="img" name="img" value={newPost.img} onChange={handleInputChange} />
             </div>
-            <button type="button" className="btn btn-primary w-100" onClick={handleAddPost}>Add Post</button>
+            <button type="button" className="btn btn-primary w-100" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} onClick={handleAddPost}>Add Post</button>
           </form>
         </div>
       </div>
