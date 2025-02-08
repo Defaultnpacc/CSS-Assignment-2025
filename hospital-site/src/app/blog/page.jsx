@@ -83,11 +83,11 @@ const BlogPage = () => {
           <form>
             <div className="mb-3">
               <label htmlFor="title" className="form-label">Title:</label>
-              <input type="text" className="form-control border border-dark" id="title" name="title" value={newPost.title} onChange={handleInputChange} />
+              <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="title" name="title" value={newPost.title} onChange={handleInputChange} />
             </div>
             <div className="mb-3">
               <label htmlFor="description" className="form-label">Description:</label>
-              <textarea className="form-control border border-dark" id="description" name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
+              <textarea className="form-control border border-dark" id="description" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
             </div>
             <div className="mb-3">
               <label htmlFor="img" className="form-label">Image URL:</label>
