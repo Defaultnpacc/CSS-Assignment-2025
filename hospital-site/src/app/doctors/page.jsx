@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Pure from "pure.js";
 import Image from "next/image";
 
 const Team = () => {
@@ -53,4 +52,4 @@ const TeamMember = ({ name, specialty, imgSrc, description }) => {
     );
 };
 
-export default Pure(Team);
+export default Team;
