@@ -1,56 +1,81 @@
 "use client";
 
-import React from "react";
-import Pure from "pure.js";
+import React, { useState } from "react";
 import Image from "next/image";
+import Header from "../../components/Header"; // Update the import path for Header component
 
 const Team = () => {
     const teamMembers = [
-        { name: "Dr. Ethan Lim", specialty: "Pregnancy Care", imgSrc: "/img/team-1.jpg", description: "Doctorate in looking at kids" },
-        { name: "Dr. Nick Gru", specialty: "Dental Care", imgSrc: "/img/team-2.jpg", description: "Doctorate in touching your teeths" },
-        { name: "Dr. Mike Oxlong", specialty: "Operation and Surgery", imgSrc: "/img/team-3.jpg", description: "Doctorate in going inside you" },
-        { name: "Dr. Ben Dover", specialty: "Health Checkup", imgSrc: "/img/team-3.jpg", description: "Doctorate in checking your health up" }
+        { name: "Dr. Ethan Lim", specialty: "Pregnancy Care", imgSrc: "/team-1.jpg", description: "Doctorate in looking at kids" },
+        { name: "Dr. Nick Gru", specialty: "Dental Care", imgSrc: "/team-2.jpg", description: "Doctorate in oral health" },
+        { name: "Dr. Mike Oxlong", specialty: "Operation and Surgery", imgSrc: "/team-3.jpg", description: "Doctorate in operation" },
+        { name: "Dr. Ben Dover", specialty: "Health Checkup", imgSrc: "/team-4.jpg", description: "Doctorate in health check-ups" }
     ];
 
     return (
-        <div className="container-fluid py-5">
-            <div className="container">
-                <div className="text-center mx-auto mb-5" style={{ maxWidth: "500px" }}>
-                    <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Our Doctors</h5>
-                    <h1 className="display-4">Qualified Healthcare Professionals</h1>
-                </div>
-                <div className="owl-carousel team-carousel position-relative">
-                    {teamMembers.map((member, index) => (
-                        <TeamMember key={index} {...member} />
-                    ))}
+        <>
+            <Header /> {/* Add the Header component here */}
+            <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center">
+                <div className="container py-5">
+                    <div className="text-center mx-auto mb-5" style={{ maxWidth: "500px" }}>
+                        <h5 className="d-inline-block text-secondary text-uppercase border-bottom border-5">Our Doctors</h5>
+                        <h1 className="display-4 text-primary">Qualified Healthcare Professionals</h1>
+                    </div>
+                    <div className="flex flex-wrap justify-center">
+                        {teamMembers.map((member, index) => (
+                            <TeamMember key={index} {...member} />
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
 const TeamMember = ({ name, specialty, imgSrc, description }) => {
     return (
-        <div className="team-item">
-            <div className="row g-0 bg-light rounded overflow-hidden">
-                <div className="col-12 col-sm-5 h-100">
-                    <Image className="img-fluid h-100" src={imgSrc} alt={name} width={500} height={500} style={{ objectFit: "cover" }} />
-                </div>
-                <div className="col-12 col-sm-7 h-100 d-flex flex-column">
-                    <div className="mt-auto p-4">
-                        <h3>{name}</h3>
-                        <h6 className="fw-normal fst-italic text-primary mb-4">{specialty}</h6>
-                        <p className="m-0">{description}</p>
-                    </div>
-                    <div className="d-flex mt-auto border-top p-4">
-                        <a className="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i className="fab fa-twitter"></i></a>
-                        <a className="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i className="fab fa-facebook-f"></i></a>
-                        <a className="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i className="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+        <div className="team-item m-4 bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-sm">
+            <div className="relative w-full h-64">
+                <Image className="object-cover w-full h-full" src={imgSrc} alt={name} layout="fill" />
+            </div>
+            <div className="p-4">
+                <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+                <h6 className="text-md font-medium text-gray-600 mb-2">{specialty}</h6>
+                <p className="text-gray-700">{description}</p>
+            </div>
+            <div className="flex justify-center p-4 border-t">
+                <a className="text-blue-500 mx-2" href="#"><i className="fab fa-twitter"></i></a>
+                <a className="text-blue-500 mx-2" href="#"><i className="fab fa-facebook-f"></i></a>
+                <a className="text-blue-500 mx-2" href="#"><i className="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     );
 };
 
-export default Pure(Team);
+// Add the drop-down menu component
+const DropdownMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <div className="relative">
+            <button className="bg-blue-500 text-white p-2 rounded" onClick={toggleMenu}>Useful Pages</button>
+            {isOpen && (
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-100000000">
+                    <ul className="list-none p-2">
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Test</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Home Page</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Doctors</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Appointment</a></li>
+                        <li><a href="#" className="block p-2 hover:bg-gray-200">Testimonials</a></li>
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Team;
