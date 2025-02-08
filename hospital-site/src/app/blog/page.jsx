@@ -2,14 +2,25 @@
 
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import Header from '../../components/Header'; // Import the Header component
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([
-    { title: 'Understanding the Ageing Population', description: 'As global demographics shift, the aging population has become a significant societal concern. Many countries are experiencing a rise in the proportion of older adults due to increased life expectancy and declining birth rates. Understanding the implications of this trend is crucial for policymakers, businesses, and communities alike.', img: 'public/blog-1.jpg' },
-    { title: 'Raising Cancer Awareness', description: 'Raising cancer awareness is a crucial step in promoting early detection, providing support for patients, and fostering a culture of prevention. Cancer affects millions of lives globally, and the key to combating it lies in spreading knowledge and understanding.', img: 'public/blog-2.jpg' },
-    { title: 'Combatting Infectious Diseases', description: 'Combating infectious diseases is one of the most pressing challenges of our time. These diseases, caused by bacteria, viruses, fungi, or parasites, can spread rapidly, affecting individuals, communities, and even entire nations. To effectively fight against infectious diseases, a multifaceted approach that includes prevention, early detection, treatment, and global cooperation is essential.', img: 'public/blog-3.jpg' }
+    {
+      title: 'Understanding the Ageing Population',
+      description: 'As global demographics shift, the aging population has become a significant societal concern. Many countries are experiencing a rise in the proportion of older adults due to increased life expectancy and declining birth rates. Understanding the implications of this trend is crucial for policymakers, businesses, and communities alike.',
+      img: 'public/blog-1.jpg'
+    },
+    {
+      title: 'Raising Cancer Awareness',
+      description: 'Raising cancer awareness is a crucial step in promoting early detection, providing support for patients, and fostering a culture of prevention. Cancer affects millions of lives globally, and the key to combating it lies in spreading knowledge and understanding.',
+      img: 'public/blog-2.jpg'
+    },
+    {
+      title: 'Combatting Infectious Diseases',
+      description: 'Combating infectious diseases is one of the most pressing challenges of our time. These diseases, caused by bacteria, viruses, fungi, or parasites, can spread rapidly, affecting individuals, communities, and even entire nations. To effectively fight against infectious diseases, a multifaceted approach that includes prevention, early detection, treatment, and global cooperation is essential.',
+      img: 'public/blog-3.jpg'
+    }
   ]);
 
   const [newPost, setNewPost] = useState({ title: '', description: '', img: '' });
@@ -33,7 +44,7 @@ const BlogPage = () => {
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Medical Blog, Health, Wellness" name="keywords" />
         <meta content="Stay updated with the latest health tips, medical news, and wellness advice." name="description" />
-        
+
         {/* Favicon */}
         <link href="img/favicon.ico" rel="icon" />
 
@@ -54,38 +65,36 @@ const BlogPage = () => {
 
         {/* Template Stylesheet */}
         <link href="css/style.css" rel="stylesheet" />
-      </Head>   
+      </Head>
 
       {/* Blog Start */}
       <div className="container-fluid py-5">
         <div className="container">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
-            <h1 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h1>
-            <h3 className="display-4">Our Latest Medical Blog Posts</h3>
+            <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
+            <h1 className="display-4">Our Latest Medical Blog Posts</h1>
           </div>
           <div className="row g-5">
             {/* Example Blog Post Item */}
             {posts.map((post, idx) => (
               <div className="col-xl-4 col-lg-6" key={idx}>
-                <Link href={`/detail?post=${idx + 1}`} passHref legacyBehavior>
-                  <a className="bg-light rounded overflow-hidden text-decoration-none">
-                    <img className="img-fluid w-100" src={post.img} alt={post.title} />
-                    <div className="p-4">
-                      <h3 className="d-block mb-3">{post.title}</h3>
-                      <p className="m-0">{post.description}</p>
+                <div className="bg-light rounded overflow-hidden text-decoration-none">
+                  <img className="img-fluid w-100" src={post.img} alt={post.title} />
+                  <div className="p-4">
+                    <h3 className="d-block mb-3">{post.title}</h3>
+                    <p className="m-0">{post.description}</p>
+                  </div>
+                  <div className="d-flex justify-content-between border-top p-4">
+                    <div className="d-flex align-items-center">
+                      <img className="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="" />
+                      <small>Dr. Jane Smith</small>
                     </div>
-                    <div className="d-flex justify-content-between border-top p-4">
-                      <div className="d-flex align-items-center">
-                        <img className="rounded-circle me-2" src="public/user.jpg" width="25" height="25" alt="" />
-                        <small>Dr. Jane Smith</small>
-                      </div>
-                      <div className="d-flex align-items-center">
-                        <small className="ms-3"><i className="far fa-eye text-primary me-1"></i>1,234</small>
-                        <small className="ms-3"><i className="far fa-comment text-primary me-1"></i>45</small>
-                      </div>
+                    <div className="d-flex align-items-center">
+                      <small className="ms-3"><i className="far fa-eye text-primary me-1"></i>1,234</small>
+                      <small className="ms-3"><i className="far fa-comment text-primary me-1"></i>45</small>
                     </div>
-                  </a>
-                </Link>
+                  </div>
+                </div>
               </div>
             ))}
             <div className="col-12 text-center">
