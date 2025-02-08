@@ -57,8 +57,8 @@ const BlogPage = () => {
                 <div className="bg-light rounded overflow-hidden mx-auto" style={{ maxWidth: '600px' }}>
                   <Image className="img-fluid d-block mx-auto" src={post.img} alt={post.title} width={600} height={350} />
                   <div className="p-4">
-                    <h3 className="d-block mb-3 text-center">{post.title}</h3>
-                    <p className="m-0">{post.description}</p>
+                    <h3 className="d-block mb-3 text-center font-weight-bold">{post.title}</h3>
+                    <p className="m-0 font-weight-bold">{post.description}</p>
                   </div>
                   <div className="d-flex flex-column align-items-center border-top p-4">
                     <Image className="rounded-circle mb-2" src="/user.jpg" width={50} height={50} alt="User" style={{ display: 'block', margin: '0 auto' }} />
