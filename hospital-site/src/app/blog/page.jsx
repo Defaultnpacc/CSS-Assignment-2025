@@ -1,12 +1,35 @@
+"use client"; // Add this directive
+
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Header from '../../components/Header'; // Import the Header component
 
 const BlogPage = () => {
+  const [posts, setPosts] = useState([
+    { title: 'Understanding the Ageing Population', description: 'As global demographics shift, the aging population has become a significant societal concern. Many countries are experiencing a rise in the proportion of older adults due to increased life expectancy and declining birth rates. Understanding the implications of this trend is crucial for policymakers, businesses, and communities alike.', img: 'public/blog-1.jpg' },
+    { title: 'Raising Cancer Awareness', description: 'Raising cancer awareness is a crucial step in promoting early detection, providing support for patients, and fostering a culture of prevention. Cancer affects millions of lives globally, and the key to combating it lies in spreading knowledge and understanding.', img: 'public/blog-2.jpg' },
+    { title: 'Combatting Infectious Diseases', description: 'Combating infectious diseases is one of the most pressing challenges of our time. These diseases, caused by bacteria, viruses, fungi, or parasites, can spread rapidly, affecting individuals, communities, and even entire nations. To effectively fight against infectious diseases, a multifaceted approach that includes prevention, early detection, treatment, and global cooperation is essential.', img: 'public/blog-3.jpg' }
+  ]);
+
+  const [newPost, setNewPost] = useState({ title: '', description: '', img: '' });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewPost({ ...newPost, [name]: value });
+  };
+
+  const handleAddPost = () => {
+    setPosts([...posts, newPost]);
+    setNewPost({ title: '', description: '', img: '' });
+  };
+
   return (
     <>
+      <Header /> {/* Add the Header component here */}
       <Head>
         <meta charSet="utf-8" />
-        <title>Medinova - Your Health Blog</title>
+        <title>KYS General Hospital - Your Health Blog</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Medical Blog, Health, Wellness" name="keywords" />
         <meta content="Stay updated with the latest health tips, medical news, and wellness advice." name="description" />
@@ -33,100 +56,6 @@ const BlogPage = () => {
         <link href="css/style.css" rel="stylesheet" />
       </Head>
 
-      {/* Topbar Start */}
-      <div className="container-fluid py-2 border-bottom d-none d-lg-block">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
-              <div className="d-inline-flex align-items-center">
-                <a className="text-decoration-none text-body pe-3" href=""><i className="bi bi-telephone me-2"></i>+012 345 6789</a>
-                <span className="text-body">|</span>
-                <a className="text-decoration-none text-body px-3" href=""><i className="bi bi-envelope me-2"></i>info@medinova.com</a>
-              </div>
-            </div>
-            <div className="col-md-6 text-center text-lg-end">
-              <div className="d-inline-flex align-items-center">
-                <a className="text-body px-2" href="">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a className="text-body px-2" href="">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a className="text-body px-2" href="">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-                <a className="text-body px-2" href="">
-                  <i className="fab fa-instagram"></i>
-                </a>
-                <a className="text-body ps-2" href="">
-                  <i className="fab fa-youtube"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Topbar End */}
-
-      {/* Navbar Start */}
-      <div className="container-fluid sticky-top bg-white shadow-sm mb-5">
-        <div className="container">
-          <nav className="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-            <Link href="/" passHref>
-              <a className="navbar-brand">
-                <h1 className="m-0 text-uppercase text-primary"><i className="fa fa-clinic-medical me-2"></i>Medinova</h1>
-              </a>
-            </Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
-              <div className="navbar-nav ms-auto py-0">
-                <Link href="/" passHref>
-                  <a className="nav-item nav-link">Home</a>
-                </Link>
-                <Link href="/about" passHref>
-                  <a className="nav-item nav-link">About</a>
-                </Link>
-                <Link href="/service" passHref>
-                  <a className="nav-item nav-link">Service</a>
-                </Link>
-                <Link href="/price" passHref>
-                  <a className="nav-item nav-link">Pricing</a>
-                </Link>
-                <div className="nav-item dropdown">
-                  <a href="#" className="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
-                  <div className="dropdown-menu m-0">
-                    <Link href="/blog" passHref>
-                      <a className="dropdown-item active">Blog Grid</a>
-                    </Link>
-                    <Link href="/detail" passHref>
-                      <a className="dropdown-item">Blog Detail</a>
-                    </Link>
-                    <Link href="/team" passHref>
-                      <a className="dropdown-item">The Team</a>
-                    </Link>
-                    <Link href="/testimonial" passHref>
-                      <a className="dropdown-item">Testimonial</a>
-                    </Link>
-                    <Link href="/appointment" passHref>
-                      <a className="dropdown-item">Appointment</a>
-                    </Link>
-                    <Link href="/search" passHref>
-                      <a className="dropdown-item">Search</a>
-                    </Link>
-                  </div>
-                </div>
-                <Link href="/contact" passHref>
-                  <a className="nav-item nav-link">Contact</a>
-                </Link>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-      {/* Navbar End */}
-
       {/* Blog Start */}
       <div className="container-fluid py-5">
         <div className="container">
@@ -136,14 +65,14 @@ const BlogPage = () => {
           </div>
           <div className="row g-5">
             {/* Example Blog Post Item */}
-            {['Understanding the Ageing Population', 'Raising Cancer Awareness', 'Combatting Infectious Diseases'].map((title, idx) => (
+            {posts.map((post, idx) => (
               <div className="col-xl-4 col-lg-6" key={idx}>
-                <Link href={`/detail?post=${idx + 1}`} passHref>
+                <Link href={`/detail?post=${idx + 1}`} passHref legacyBehavior>
                   <a className="bg-light rounded overflow-hidden text-decoration-none">
-                    <img className="img-fluid w-100" src={`img/blog-${idx + 1}.jpg`} alt={title} />
+                    <img className="img-fluid w-100" src={post.img} alt={post.title} />
                     <div className="p-4">
-                      <h3 className="d-block mb-3">{title}</h3>
-                      <p className="m-0">Short description about the blog post goes here.</p>
+                      <h3 className="d-block mb-3">{post.title}</h3>
+                      <p className="m-0">{post.description}</p>
                     </div>
                     <div className="d-flex justify-content-between border-top p-4">
                       <div className="d-flex align-items-center">
@@ -167,44 +96,34 @@ const BlogPage = () => {
       </div>
       {/* Blog End */}
 
-      {/* Footer Start */}
-      <div className="container-fluid bg-dark text-light mt-5 py-5">
-        <div className="container py-5">
+      {/* Add New Blog Post Form */}
+      <div className="container-fluid py-5">
+        <div className="container">
+          <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
+            <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Add New Blog Post</h5>
+          </div>
           <div className="row g-5">
-            <div className="col-lg-3 col-md-6">
-              <h4 className="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Get In Touch</h4>
-              <p className="mb-4">We are here to help you with your health needs. Reach out to us anytime!</p>
-              <p className="mb-2"><i className="fa fa-map-marker-alt text-primary me-3"></i>123 Health St, Wellness City, USA</p>
-              <p className="mb-2"><i className="fa fa-envelope text-primary me-3"></i>info@medinova.com</p>
-              <p className="mb-0"><i className="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <h4 className="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">Quick Links</h4>
-              <div className="d-flex flex-column justify-content-start">
-                <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Home</a>
-                </Link>
-                <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>About Us</a>
-                </Link>
-                <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Our Services</a>
-                </Link>
-                <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Meet The Team</a>
-                </Link>
-                <Link href="#" passHref>
-                  <a className="text-light mb-2"><i className="fa fa-angle-right me-2"></i>Latest Blog</a>
-                </Link>
-                <Link href="#" passHref>
-                  <a className="text-light"><i className="fa fa-angle-right me-2"></i>Contact</a>
-                </Link>
-              </div>
+            <div className="col-12">
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="title" className="form-label">Title</label>
+                  <input type="text" className="form-control" id="title" name="title" value={newPost.title} onChange={handleInputChange} />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="description" className="form-label">Description</label>
+                  <textarea className="form-control" id="description" name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="img" className="form-label">Image URL</label>
+                  <input type="text" className="form-control" id="img" name="img" value={newPost.img} onChange={handleInputChange} />
+                </div>
+                <button type="button" className="btn btn-primary" onClick={handleAddPost}>Add Post</button>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      {/* Footer End */}
+      {/* Add New Blog Post Form End */}
     </>
   );
 };
