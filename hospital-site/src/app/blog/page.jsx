@@ -60,8 +60,8 @@ const BlogPage = () => {
       <div className="container-fluid py-5">
         <div className="container">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
-            <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
-            <h1 className="display-4">Our Latest Medical Blog Posts</h1>
+            <h2 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h2>
+            <h3 className="display-4">Our Latest Medical Blog Posts</h3>
           </div>
           <div className="row g-5">
             {/* Example Blog Post Item */}
@@ -76,7 +76,7 @@ const BlogPage = () => {
                     </div>
                     <div className="d-flex justify-content-between border-top p-4">
                       <div className="d-flex align-items-center">
-                        <img className="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="" />
+                        <img className="rounded-circle me-2" src="public/user.jpg" width="25" height="25" alt="" />
                         <small>Dr. Jane Smith</small>
                       </div>
                       <div className="d-flex align-items-center">
