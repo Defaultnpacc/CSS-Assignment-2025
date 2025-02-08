@@ -25,7 +25,7 @@ const BlogPage = () => {
     <>
       <Head>
         <meta charSet="utf-8" />
-        <title>Medinova - Your Health Blog</title>
+        <title>KYS General Hospital - Your Health Blog</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Medical Blog, Health, Wellness" name="keywords" />
         <meta content="Stay updated with the latest health tips, medical news, and wellness advice." name="description" />
