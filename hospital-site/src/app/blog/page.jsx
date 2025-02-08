@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import Image from 'next/image'; // Import Image component
 import Header from '../../components/Header'; // Import the Header component
 
@@ -12,18 +11,6 @@ const BlogPage = () => {
     { title: 'Raising Cancer Awareness', description: 'Raising cancer awareness is a crucial step in promoting early detection, providing support for patients, and fostering a culture of prevention. Cancer affects millions of lives globally, and the key to combating it lies in spreading knowledge and understanding.', img: '/blog-2.jpg' },
     { title: 'Combatting Infectious Diseases', description: 'Combating infectious diseases is one of the most pressing challenges of our time. These diseases, caused by bacteria, viruses, fungi, or parasites, can spread rapidly, affecting individuals, communities, and even entire nations. To effectively fight against infectious diseases, a multifaceted approach that includes prevention, early detection, treatment, and global cooperation is essential.', img: '/blog-3.jpg' }
   ]);
-
-  const [newPost, setNewPost] = useState({ title: '', description: '', img: '' });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewPost({ ...newPost, [name]: value });
-  };
-
-  const handleAddPost = () => {
-    setPosts([...posts, newPost]);
-    setNewPost({ title: '', description: '', img: '' });
-  };
 
   return (
     <>
@@ -72,39 +59,6 @@ const BlogPage = () => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div className="container-fluid py-5" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }}>
-        <div className="container">
-          <div className="text-center mx-auto mb-5">
-            <h5 className="d-inline-block text-primary text-uppercase">Add New Blog Post</h5>
-          </div>
-          <form>
-            <div className="row mb-3">
-              <div className="col-12">
-                <label htmlFor="title" className="form-label">Title:</label>
-                <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="title" name="title" value={newPost.title} onChange={handleInputChange} />
-              </div>
-            </div>
-            <div className="row mb-3">
-              <div className="col-12">
-                <label htmlFor="description" className="form-label">Description:</label>
-                <textarea className="form-control border border-dark" id="description" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
-              </div>
-            </div>
-            <div className="row mb-3">
-              <div className="col-12">
-                <label htmlFor="img" className="form-label">Image URL:</label>
-                <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="img" name="img" value={newPost.img} onChange={handleInputChange} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <button type="button" className="btn btn-primary w-100" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} onClick={handleAddPost}>Add Post</button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </>
