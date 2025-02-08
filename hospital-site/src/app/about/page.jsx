@@ -148,7 +148,8 @@ const AboutPage = () => { // Define AboutPage component
               ))}
             </ul>
           ) : (
-            <p>No doctor information available at the moment.</p> {/* No doctors message */}
+            // No doctors message
+            <p>No doctor information available at the moment.</p>
           )}
         </div>
         <div className="mt-4"> {/* Google Maps iframe */}
