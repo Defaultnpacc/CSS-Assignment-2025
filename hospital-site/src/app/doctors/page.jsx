@@ -64,7 +64,7 @@ const DropdownMenu = () => {
         <div className="relative">
             <button className="bg-blue-500 text-white p-2 rounded" onClick={toggleMenu}>Useful Pages</button>
             {isOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-50">
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-100000000">
                     <ul className="list-none p-2">
                         <li><a href="#" className="block p-2 hover:bg-gray-200">Test</a></li>
                         <li><a href="#" className="block p-2 hover:bg-gray-200">Home Page</a></li>
