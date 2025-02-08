@@ -53,15 +53,15 @@ const BlogPage = () => {
           </div>
           <div className="row g-5 justify-content-center">
             {posts.map((post, idx) => (
-              <div className="col-12 col-md-4" key={idx}>
-                <div className="bg-light rounded overflow-hidden mx-auto" style={{ maxWidth: '400px' }}>
+              <div className="col-12 col-md-8" key={idx}>
+                <div className="bg-light rounded overflow-hidden mx-auto" style={{ maxWidth: '600px' }}>
+                  <Image className="img-fluid d-block mx-auto" src={post.img} alt={post.title} width={600} height={350} />
                   <div className="p-4">
-                    <h3 className="d-block mb-3 text-center">{post.title}</h3>
-                    <p className="m-0 text-center">{post.description}</p>
+                    <h3 className="d-block mb-3 text-center font-weight-bold">{post.title}</h3>
+                    <p className="m-0 font-weight-bold">{post.description}</p>
                   </div>
-                  <Image className="img-fluid d-block mx-auto" src={post.img} alt={post.title} width={400} height={250} />
                   <div className="d-flex flex-column align-items-center border-top p-4">
-                    <Image className="rounded-circle" src="/user.jpg" width={50} height={50} alt="User" />
+                    <Image className="rounded-circle mb-2" src="/user.jpg" width={50} height={50} alt="User" style={{ display: 'block', margin: '0 auto' }} />
                     <small>Dr. Jane Smith</small>
                     <div className="d-flex mt-2">
                       <small className="ms-3"><i className="far fa-eye text-primary me-1"></i>1,234</small>
@@ -72,6 +72,39 @@ const BlogPage = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      <div className="container-fluid py-5" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }}>
+        <div className="container">
+          <div className="text-center mx-auto mb-5">
+            <h5 className="d-inline-block text-primary text-uppercase">Add New Blog Post</h5>
+          </div>
+          <form>
+            <div className="row mb-3">
+              <div className="col-12">
+                <label htmlFor="title" className="form-label">Title:</label>
+                <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="title" name="title" value={newPost.title} onChange={handleInputChange} />
+              </div>
+            </div>
+            <div className="row mb-3">
+              <div className="col-12">
+                <label htmlFor="description" className="form-label">Description:</label>
+                <textarea className="form-control border border-dark" id="description" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} name="description" rows="3" value={newPost.description} onChange={handleInputChange}></textarea>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <div className="col-12">
+                <label htmlFor="img" className="form-label">Image URL:</label>
+                <input type="text" className="form-control border border-dark" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} id="img" name="img" value={newPost.img} onChange={handleInputChange} />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <button type="button" className="btn btn-primary w-100" style={{ border: '2px solid #333', borderRadius: '10px', padding: '20px' }} onClick={handleAddPost}>Add Post</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </>
