@@ -1,7 +1,7 @@
 // page done by Ryan Tang
 "use client"; // Use client directive
 
-import React, { useState } from 'react'; // Import React and useState
+import React, { useState, useEffect } from 'react'; // Import React, useState, and useEffect
 import Header from '../../components/Header'; // Import Header component
 
 const AboutPage = () => { // Define AboutPage component
@@ -10,6 +10,17 @@ const AboutPage = () => { // Define AboutPage component
     email: '',
     message: ''
   });
+  const [errors, setErrors] = useState({});
+  const [popupMessage, setPopupMessage] = useState('');
+
+  useEffect(() => {
+    if (popupMessage) {
+      const timer = setTimeout(() => {
+        setPopupMessage('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [popupMessage]);
 
   const handleChange = (e) => { // Handle input change
     const { name, value } = e.target;
@@ -19,14 +30,34 @@ const AboutPage = () => { // Define AboutPage component
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = 'Name is required';
+    if (!formData.email) newErrors.email = 'Email is required';
+    if (!formData.message) newErrors.message = 'Message is required';
+    return newErrors;
+  };
+
   const handleSubmit = (e) => { // Handle form submission
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setPopupMessage('Please fill in required fields');
+    } else {
+      setErrors({});
+      setPopupMessage('Form submitted successfully');
+      console.log('Form submitted:', formData);
+    }
   };
 
   return (
     <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center"> {/* Page container */}
+      {popupMessage && (
+        <div className={`fixed top-0 left-0 right-0 p-4 text-center ${popupMessage === 'Form submitted successfully' ? 'bg-green-500 text-black' : 'bg-red-500 text-white'}`}>
+          {popupMessage}
+        </div>
+      )}
       <Header /> {/* Header component */}
       <main className="p-8 sm:p-20 w-full max-w-4xl"> {/* Main content */}
         <h1 className="text-2xl font-bold mb-4">About Us</h1> {/* Page title */}
@@ -48,9 +79,10 @@ const AboutPage = () => { // Define AboutPage component
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded"
+                className={`w-full p-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded`}
                 required
               />
+              {errors.name && <p className="text-red-500 text-sm">* {errors.name}</p>}
             </div>
             <div>
               <label htmlFor="email" className="block">Email:</label>
@@ -60,9 +92,10 @@ const AboutPage = () => { // Define AboutPage component
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded"
+                className={`w-full p-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded`}
                 required
               />
+              {errors.email && <p className="text-red-500 text-sm">* {errors.email}</p>}
             </div>
             <div>
               <label htmlFor="message" className="block">Message:</label>
@@ -71,9 +104,10 @@ const AboutPage = () => { // Define AboutPage component
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded"
+                className={`w-full p-2 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded`}
                 required
               />
+              {errors.message && <p className="text-red-500 text-sm">* {errors.message}</p>}
             </div>
             <button type="submit" className="bg-blue-900 text-white p-2 rounded">Submit</button>
           </form>

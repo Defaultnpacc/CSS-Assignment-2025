@@ -10,6 +10,7 @@ import Carousel from "../../components/Carousel"; // Import Carousel component
 export default function HomePage() { // Define HomePage component
   const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Define isVideoPlaying state
   const [isModalOpen, setIsModalOpen] = useState(false); // Define isModalOpen state
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false); // Define isMusicPlaying state
 
   useEffect(() => { // Load user preferences from localStorage
     const savedVideoState = localStorage.getItem('isVideoPlaying');
@@ -22,10 +23,27 @@ export default function HomePage() { // Define HomePage component
     localStorage.setItem('isVideoPlaying', JSON.stringify(isVideoPlaying));
   }, [isVideoPlaying]);
 
+  useEffect(() => {
+    if (isMusicPlaying) {
+      const audio = new Audio('/bgm.mp3');
+      audio.loop = true;
+      audio.play().catch(error => console.error('Error playing audio:', error));
+      return () => {
+        audio.pause();
+        audio.currentTime = 0;
+      };
+    }
+  }, [isMusicPlaying]);
+
   return (
     <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center"> {/* Page container */}
       <Header /> {/* Header component */}
       <main className="p-8 sm:p-20 w-full max-w-4xl"> {/* Main content */}
+        {!isMusicPlaying && (
+          <button onClick={() => setIsMusicPlaying(true)} className="bg-blue-900 text-white p-2 rounded mb-4">
+            Play BGM
+          </button>
+        )}
         <section className="flex flex-col items-center mb-8"> {/* Video section */}
           <div className="relative w-full max-w-[600px] aspect-[3/2]"> {/* Video container */}
             {isVideoPlaying ? (
