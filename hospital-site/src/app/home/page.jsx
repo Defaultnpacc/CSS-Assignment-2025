@@ -1,27 +1,38 @@
-"use client";
+// page done by Ryan Tang
+"use client"; // Use client directive
 
-import { useState } from "react";
-import Image from "next/image";
-import Header from "../../components/Header";
+import { useState, useEffect } from "react"; // Import useState and useEffect
+import Image from "next/image"; // Import Image component
+import Header from "../../components/Header"; // Import Header component
+import Modal from "../../components/Modal"; // Import Modal component
+import Carousel from "../../components/Carousel"; // Import Carousel component
 
-export default function HomePage() {
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+export default function HomePage() { // Define HomePage component
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Define isVideoPlaying state
+  const [isModalOpen, setIsModalOpen] = useState(false); // Define isModalOpen state
+
+  useEffect(() => { // Load user preferences from localStorage
+    const savedVideoState = localStorage.getItem('isVideoPlaying');
+    if (savedVideoState) {
+      setIsVideoPlaying(JSON.parse(savedVideoState));
+    }
+  }, []);
+
+  useEffect(() => { // Save user preferences to localStorage
+    localStorage.setItem('isVideoPlaying', JSON.stringify(isVideoPlaying));
+  }, [isVideoPlaying]);
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center">
-      {/* Header */}
-      <Header />
-
-      {/* Main Content */}
-      <main className="p-8 sm:p-20 w-full max-w-4xl">
-        {/* Media Section */}
-        <section className="flex flex-col items-center mb-8">
-          <div className="relative w-full max-w-[600px] aspect-[3/2]">
+    <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center"> {/* Page container */}
+      <Header /> {/* Header component */}
+      <main className="p-8 sm:p-20 w-full max-w-4xl"> {/* Main content */}
+        <section className="flex flex-col items-center mb-8"> {/* Video section */}
+          <div className="relative w-full max-w-[600px] aspect-[3/2]"> {/* Video container */}
             {isVideoPlaying ? (
               <iframe
                 width="600"
                 height="400"
-                src="https://www.youtube.com/embed/CPF2-PpfAfA?si=d69bH3TWL4ly0QOz"
+                src="https://www.youtube.com/embed/CPF2-PpfAfA?si=d69bH3TWL4ly0QOz&autoplay=1" // Add autoplay=1 to the URL
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -62,9 +73,7 @@ export default function HomePage() {
             )}
           </div>
         </section>
-
-        {/* Text Content */}
-        <section className="text-center sm:text-left">
+        <section className="text-center sm:text-left"> {/* Welcome section */}
           <h2 className="text-2xl font-bold mb-4">Welcome to KYS General Hospital</h2>
           <p className="mb-4">
             At KYS General Hospital, we are committed to providing the highest quality healthcare services to our community. Our team of experienced professionals is dedicated to ensuring your well-being and comfort.
@@ -75,13 +84,16 @@ export default function HomePage() {
           <p className="mb-4">
             Thank you for choosing KYS General Hospital. We look forward to serving you and your family.
           </p>
+          <button onClick={() => setIsModalOpen(true)} className="bg-blue-900 text-white p-2 rounded">Learn More</button>
+        </section>
+        <section className="mt-8"> {/* Carousel section */}
+          <Carousel />
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-blue-900 text-white p-4 w-full text-center">
+      <footer className="bg-blue-900 text-white p-4 w-full text-center"> {/* Footer */}
         <p>&copy; 2025 KYS General Hospital. All rights reserved.</p>
       </footer>
+      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />} {/* Modal */}
     </div>
   );
 }

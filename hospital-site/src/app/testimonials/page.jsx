@@ -1,9 +1,10 @@
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css'; // Importing OwlCarousel CSS
-import 'owl.carousel'; // Importing OwlCarousel JS
+import dynamic from 'next/dynamic';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+
+const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 export const Testimonials = () => {
-    // Testimonials data
     const testimonials = [
         {
             name: "Ethan",
@@ -13,7 +14,7 @@ export const Testimonials = () => {
         },
         {
             name: "Damien",
-            role: "Stripper",
+            role: "Artist",
             text: "Warded for 3 days and the care was excellent. Yes, there's a long waiting time for a ward, but the nurses provided the same care everywhere. Couldn't be more pleased with the healthcare I received.",
             img: "/img/testimonial-2.jpg"
         },
