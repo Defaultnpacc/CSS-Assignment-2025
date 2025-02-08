@@ -59,7 +59,7 @@ const BlogPage = () => {
 
       {/* Blog Start */}
       <div className="container-fluid py-5">
-        <div className="container">
+        <div className="container text-center">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
             <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
             <h1 className="display-4">Our Latest Medical Blog Posts</h1>
@@ -67,9 +67,9 @@ const BlogPage = () => {
           <div className="row g-5 justify-content-center">
             {/* Example Blog Post Item */}
             {posts.map((post, idx) => (
-              <div className="col-xl-4 col-lg-6 d-flex align-items-stretch" key={idx}>
-                <div className="bg-light rounded overflow-hidden w-100">
-                  <Image className="img-fluid w-100" src={post.img} alt={post.title} width={500} height={300} />
+              <div className="col-12 col-md-8" key={idx}>
+                <div className="bg-light rounded overflow-hidden mx-auto" style={{ maxWidth: '600px' }}>
+                  <Image className="img-fluid" src={post.img} alt={post.title} width={600} height={350} />
                   <div className="p-4">
                     <h3 className="d-block mb-3">{post.title}</h3>
                     <p className="m-0">{post.description}</p>
