@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
-import axios from 'axios'; // Import Axios for data fetching
+import Link from 'next/link'; // Import Link from next/link
 
 export default function Appointment() {
   const [formData, setFormData] = useState({
@@ -17,14 +17,17 @@ export default function Appointment() {
   const [departments, setDepartments] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [errors, setErrors] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+  const [appointmentDetails, setAppointmentDetails] = useState({}); // State to store appointment details
 
   useEffect(() => {
     // Mock data for departments and doctors
     const mockDepartments = [
-      { id: 1, name: 'Pregnancy Care' },
+      { id: 1, name: 'Cardiology' },
       { id: 2, name: 'Dental' },
-      { id: 3, name: 'Operation & Surgery' },
-      { id: 4, name: 'Overall Health & Wellness' }
+      { id: 3, name: 'Maternity & Pediatrics Care' },
+      { id: 4, name: 'Operation & Surgery' },
+      { id: 5, name: 'Orthopedics' }
     ];
     const mockDoctors = [
       { id: 1, name: 'Dr. Ethan Lim' },
@@ -68,9 +71,23 @@ export default function Appointment() {
       setErrors(validationErrors);
     } else {
       console.log('Appointment booked:', formData);
+      setAppointmentDetails(formData); // Set appointment details
+      setIsModalOpen(true); // Show modal
       localStorage.removeItem('appointmentFormData'); // Clear form data from localStorage
       setErrors({});
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const formatTime = (time) => {
+    const [hour, minute] = time.split(':');
+    const hourInt = parseInt(hour, 10);
+    const ampm = hourInt >= 12 ? 'PM' : 'AM';
+    const formattedHour = hourInt % 12 || 12;
+    return `${formattedHour}:${minute} ${ampm}`;
   };
 
   return (
@@ -79,7 +96,8 @@ export default function Appointment() {
       <div className="container mx-auto px-4 py-12"> {/* Main content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"> {/* Grid layout */}
           <div>
-            <h2 className="text-teal-500 font-bold">APPOINTMENT</h2>
+            <h1 className="text-teal-500 font-bold appointment-header">APPOINTMENT</h1> {/* Added class */}
+            <img src="/appointment-1.jpg" alt="Appointment" className="my-4 cropped-image" /> {/* Inserted Image */}
             <h1 className="text-4xl font-bold text-gray-800 mt-2">Make An Appointment For Your Family</h1>
             <p className="text-gray-600 mt-4">
               Ensuring your family's health is our top priority. Book an appointment with our experienced doctors and receive
@@ -88,12 +106,16 @@ export default function Appointment() {
               step towards better health for you and your loved ones.
             </p>
             <div className="flex gap-4 mt-6">
-              <button className="bg-teal-500 text-white px-6 py-3 rounded-lg">Our Doctors</button>
-              <button className="border border-teal-500 text-teal-500 px-6 py-3 rounded-lg">Read More</button>
+              <Link href="/doctors">
+                <button className="bg-teal-500 text-white px-6 py-3 rounded-lg">Our Doctors</button>
+              </Link>
+              <Link href="/services">
+                <button className="border border-teal-500 text-teal-500 px-6 py-3 rounded-lg">Read More</button>
+              </Link>
             </div>
           </div>
           
-          <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-md book-appointment-container"> {/* Added class */}
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Book An Appointment</h2>
             <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
               <select name="department" value={formData.department} onChange={handleChange} className="p-3 border rounded">
@@ -123,6 +145,21 @@ export default function Appointment() {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Appointment Details</h2>
+            <p><strong>Department:</strong> {appointmentDetails.department}</p>
+            <p><strong>Doctor:</strong> {appointmentDetails.doctor}</p>
+            <p><strong>Name:</strong> {appointmentDetails.name}</p>
+            <p><strong>Date:</strong> {appointmentDetails.date}</p>
+            <p><strong>Time:</strong> {formatTime(appointmentDetails.time)}</p>
+            <button onClick={closeModal} className="mt-4 bg-teal-500 text-white px-6 py-3 rounded-lg">Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

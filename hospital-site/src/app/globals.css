@@ -112,3 +112,19 @@ body {
   color: #007bff;
 }
 
+.cropped-image {
+  height: 400px; /* Adjust the height as needed */
+  object-fit: cover;
+  width: 100%;
+}
+
+.book-appointment-container {
+  margin-top: 360px; /* Adjust the margin as needed */
+}
+
+.appointment-header {
+  text-align: right; /* Align text to the right */
+  margin-right: -550px; /* Adjust the margin as needed */
+  margin-top: 10px; /* Adjust the margin as needed */
+  font-size: 2.5rem;
+}
