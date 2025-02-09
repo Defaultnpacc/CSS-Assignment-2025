@@ -18,7 +18,7 @@ export const Testimonials = () => {
       img: "/testimonial-2.jpg"
     },
     {
-      name: "Ryan",
+      name: "Wong Kai Ze",
       role: "Lecturer",
       text: "I have only been met with warmth, kindness and patience from the point I passed my referral letter to the registration counter, to the doctor's consultation, to medicine collection and payment.",
       img: "/testimonial-3.jpg"
