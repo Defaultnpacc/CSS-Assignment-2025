@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Header from "../../components/Header"; // Correct the import path for Header component
+import Header from "../../components/Header"; // Update the import path for Header component
 
 const Team = () => {
     const teamMembers = [
@@ -17,10 +17,10 @@ const Team = () => {
             <Header /> {/* Add the Header component here */}
             <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center">
                 <div className="container py-5">
-                    <div className="text-center mx-auto mb-5" style={{ maxWidth: "500px" }}>
-                        <h5 className="d-inline-block text-secondary text-uppercase border-bottom border-5">Our Doctors</h5>
-                        <h1 className="display-4 text-primary">Qualified Healthcare Professionals</h1>
-                    </div>
+                <div className="text-center mx-auto mb-5" style={{ maxWidth: "500px" }}>
+                    <h1 className="text-blue-600 font-bold uppercase text-5xl">Our Doctors</h1>
+                    <h2 className="text-black font-semibold text-3xl">Qualified Healthcare Professionals</h2>
+                </div>
                     <div className="flex flex-wrap justify-center">
                         {teamMembers.map((member, index) => (
                             <TeamMember key={index} {...member} />
@@ -31,7 +31,6 @@ const Team = () => {
         </>
     );
 };
-
 const TeamMember = ({ name, specialty, imgSrc, description }) => {
     return (
         <div className="team-item m-4 bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-sm">
@@ -64,7 +63,7 @@ const DropdownMenu = () => {
         <div className="relative">
             <button className="bg-blue-500 text-white p-2 rounded" onClick={toggleMenu}>Useful Pages</button>
             {isOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-100000000">
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg z-50">
                     <ul className="list-none p-2">
                         <li><a href="#" className="block p-2 hover:bg-gray-200">Test</a></li>
                         <li><a href="#" className="block p-2 hover:bg-gray-200">Home Page</a></li>
