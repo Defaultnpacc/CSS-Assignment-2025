@@ -63,9 +63,6 @@ export default function Header() {
               <Link href="/services" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Services</a>
               </Link>
-              <Link href="/location" legacyBehavior>
-                <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Locations</a>
-              </Link>
               <Link href="/about" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">About</a>
               </Link>
