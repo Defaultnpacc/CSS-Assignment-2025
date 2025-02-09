@@ -1,3 +1,4 @@
+// Done by Ryan Tang
 import React from 'react'; // Import React
 
 const Modal = ({ onClose }) => { // Define the Modal component
