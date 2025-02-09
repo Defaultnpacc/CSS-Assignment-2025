@@ -171,7 +171,7 @@ export default function Appointment() {
             <p><strong>Name:</strong> {appointmentDetails.name}</p>
             <p><strong>Date:</strong> {appointmentDetails.date}</p>
             <p><strong>Time:</strong> {formatTime(appointmentDetails.time)}</p> {/* Formatted time */}
-            <button onClick={closeModal} className="mt-4 bg-teal-500 text-white px-6 py-3 rounded-lg">Close</button> {/* Close modal button */}
+            <button onClick={closeModal} className="mt-4 bg-blue-900 text-white px-6 py-3 rounded-lg">Close</button> {/* Close modal button */}
           </div>
         </div>
       )}
