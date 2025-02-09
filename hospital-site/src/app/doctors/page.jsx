@@ -18,8 +18,8 @@ const Team = () => {
             <div className="min-h-screen bg-white text-gray-800 flex flex-col items-center">
                 <div className="container py-5">
                 <div className="text-center mx-auto mb-5" style={{ maxWidth: "500px" }}>
-                    <h1 className="text-blue-600 font-bold uppercase text-5xl">Our Doctors</h1>
-                    <h2 className="text-black font-semibold text-3xl">Qualified Healthcare Professionals</h2>
+                    <h1 className="text-blue-600 font-bold uppercase text-4xl">Our Doctors</h1>
+                    <h2 className="text-black font-semibold text-2xl">Qualified Healthcare Professionals</h2>
                 </div>
                     <div className="flex flex-wrap justify-center">
                         {teamMembers.map((member, index) => (
