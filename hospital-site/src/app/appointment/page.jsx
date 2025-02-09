@@ -107,10 +107,10 @@ export default function Appointment() {
             </p>
             <div className="flex gap-4 mt-6">
               <Link href="/doctors">
-                <button className="bg-teal-500 text-white px-6 py-3 rounded-lg">Our Doctors</button>
+                <button className="bg-blue-900 text-white px-6 py-3 rounded-lg">Our Doctors</button>
               </Link>
               <Link href="/services">
-                <button className="border border-teal-500 text-teal-500 px-6 py-3 rounded-lg">Read More</button>
+                <button className="border border-blue-900 text-blue-900 px-6 py-3 rounded-lg">Read More</button>
               </Link>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function Appointment() {
               {errors.date && <span className="text-red-500 col-span-2">{errors.date}</span>}
               <input type="time" name="time" value={formData.time} onChange={handleChange} className="p-3 border rounded" />
               {errors.time && <span className="text-red-500 col-span-2">{errors.time}</span>}
-              <button type="submit" className="col-span-2 bg-teal-500 text-white py-3 rounded-lg">Make An Appointment</button>
+              <button type="submit" className="col-span-2 bg-blue-900 text-white py-3 rounded-lg">Make An Appointment</button>
             </form>
           </div>
         </div>
@@ -160,6 +160,11 @@ export default function Appointment() {
           </div>
         </div>
       )}
+
+      {/* Footer */}
+      <footer className="bg-blue-900 text-white p-6 w-full text-center mt-8">
+        <p>&copy; 2025 KYS General Hospital. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
