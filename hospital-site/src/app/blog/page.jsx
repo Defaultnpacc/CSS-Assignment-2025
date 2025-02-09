@@ -80,7 +80,7 @@ const BlogPage = () => {
           <div className="row g-5 justify-content-center"> {/* Row to layout blog posts */}
             {posts.map((post, idx) => (
               // Iterate through the posts array and render each post
-              <div className="col-12 col-md-8" key={idx}> {/* Column for each post */}
+              <div className="col-12 col-md-6 col-lg-4" key={idx}> {/* Column for each post */}
                 <div
                   className="bg-light rounded overflow-hidden mx-auto"
                   style={{ maxWidth: "600px" }} // Styling for the post container
