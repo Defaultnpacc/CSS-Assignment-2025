@@ -9,7 +9,11 @@ export default function Header() {
 
   return (
     <header className="bg-blue-900 text-white p-4 w-full flex justify-between items-center">
-      <h1 className="text-3xl font-bold">KYS General Hospital</h1>
+      <Link href="/home" legacyBehavior>
+        <a>
+          <h1 className="text-3xl font-bold">KYS General Hospital</h1>
+        </a>
+      </Link>
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">
           <img src="/cell-phone-svgrepo-com.svg" alt="Phone" className="h-6 w-6" />
@@ -40,6 +44,9 @@ export default function Header() {
               <Link href="/home" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Home Page</a>
               </Link>
+              <Link href="/events" legacyBehavior>
+                <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Events</a>
+              </Link>
               <Link href="/doctors" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Doctors</a>
               </Link>
@@ -49,8 +56,14 @@ export default function Header() {
               <Link href="/appointment" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Appointment</a>
               </Link>
+              <Link href="/volunteer" legacyBehavior>
+                <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Volunteer Information</a>
+              </Link>
               <Link href="/testimonials" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Testimonials</a>
+              </Link>
+              <Link href="/services" legacyBehavior>
+                <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">Services</a>
               </Link>
               <Link href="/about" legacyBehavior>
                 <a className="block px-4 py-2 text-blue-900 hover:bg-blue-100">About</a>
