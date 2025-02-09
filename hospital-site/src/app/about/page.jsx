@@ -186,7 +186,7 @@ const AboutPage = () => { // Define AboutPage component
                     </ul>
                 </section>
 
-                {/* Parking Information Section */}
+                {/* Parking Information Section */} {/* This Part Done By Gabriel */}
                 <section className="bg-white p-8 rounded-xl shadow-lg mb-8 transform transition-transform duration-300 hover:scale-105">
                     <h2 className="text-2xl font-semibold mb-4 text-blue-800">Parking Information</h2>
                     <p className="mb-4 text-gray-600">We have ample parking space available for our patients and visitors. The parking lot is located next to the main entrance of the hospital.</p>
