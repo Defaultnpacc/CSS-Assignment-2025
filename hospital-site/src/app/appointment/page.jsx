@@ -21,14 +21,16 @@ export default function Appointment() {
   useEffect(() => {
     // Mock data for departments and doctors
     const mockDepartments = [
-      { id: 1, name: 'Cardiology' },
-      { id: 2, name: 'Neurology' },
-      { id: 3, name: 'Pediatrics' }
+      { id: 1, name: 'Pregnancy Care' },
+      { id: 2, name: 'Dental' },
+      { id: 3, name: 'Operation & Surgery' },
+      { id: 4, name: 'Overall Health & Wellness' }
     ];
     const mockDoctors = [
-      { id: 1, name: 'Dr. Smith' },
-      { id: 2, name: 'Dr. Johnson' },
-      { id: 3, name: 'Dr. Williams' }
+      { id: 1, name: 'Dr. Ethan Lim' },
+      { id: 2, name: 'Dr. Nick Gru' },
+      { id: 3, name: 'Dr. Mike Oxlong' },
+      { id: 4, name: 'Ben Dover' }
     ];
 
     // Set mock data
