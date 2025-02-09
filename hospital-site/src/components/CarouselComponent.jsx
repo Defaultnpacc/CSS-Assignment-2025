@@ -21,7 +21,7 @@ const CarouselComponent = ({ testimonials }) => {
       {testimonials.map((testimonial, index) => (
         <div className="testimonial-item text-center" key={index}>
           <div className="position-relative mb-5">
-            <img className="img-fluid rounded-circle mx-auto" src={testimonial.img} alt={testimonial.name} />
+            <img className="img-fluid rounded-circle mx-auto" src={testimonial.img} alt={testimonial.name} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
             <div className="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style={{ width: '60px', height: '60px' }}>
               <i className="fa fa-quote-left fa-2x text-primary"></i>
             </div>

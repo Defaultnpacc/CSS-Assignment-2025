@@ -9,19 +9,19 @@ export const Testimonials = () => {
       name: "Ethan",
       role: "Student",
       text: "Recovered just in time for my exams! Really thankful for all the care and attention I've received by the staff.",
-      img: "/img/testimonial-1.jpg"
+      img: "/testimonial-1.jpg"
     },
     {
       name: "Damien",
       role: "Artist",
       text: "Warded for 3 days and the care was excellent. Yes, there's a long waiting time for a ward, but the nurses provided the same care everywhere. Couldn't be more pleased with the healthcare I received.",
-      img: "/img/testimonial-2.jpg"
+      img: "/testimonial-2.jpg"
     },
     {
       name: "Ryan",
       role: "Lecturer",
       text: "I have only been met with warmth, kindness and patience from the point I passed my referral letter to the registration counter, to the doctor's consultation, to medicine collection and payment.",
-      img: "/img/testimonial-3.jpg"
+      img: "/testimonial-3.jpg"
     }
   ];
 
@@ -43,7 +43,7 @@ export const Testimonials = () => {
       </Head>
       <Header />
       <div className="container-fluid py-5">
-        <div className="container">
+        <div className="container text-center">
           <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
             <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
             <h1 className="display-4">What Patients Say About Our Services</h1>
