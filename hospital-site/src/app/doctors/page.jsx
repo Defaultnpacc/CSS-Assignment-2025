@@ -31,6 +31,10 @@ const Team = () => {
                     </div>
                 </div>
             </div>
+            {/* Footer section */}
+            <footer className="bg-blue-900 text-white p-6 w-full text-center mt-8">
+                <p>&copy; 2025 KYS General Hospital. All rights reserved.</p>
+            </footer>
         </>
     );
 };
