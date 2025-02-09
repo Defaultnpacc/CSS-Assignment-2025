@@ -19,6 +19,8 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Ethan Lim*/
 /* Center the section properly */
 .testimonial-container {
   display: flex;
