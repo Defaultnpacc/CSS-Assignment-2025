@@ -1,4 +1,4 @@
-//Done by Ryan Tang
+//Done by Ryan Tang & Gabriel Worrall
 "use client"; // Use client directive
 
 import React, { useState, useEffect } from 'react'; // Import React, useState, and useEffect
