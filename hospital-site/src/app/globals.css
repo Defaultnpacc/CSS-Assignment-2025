@@ -19,3 +19,96 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Center the section properly */
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Full viewport height */
+  background: #f8f9fa;
+  padding: 50px 20px;
+  margin-top: -70px; /* Move the container up */
+}
+
+/* Content Wrapper */
+.testimonial-content {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Section Header */
+.heading-container {
+  margin-bottom: 30px;
+}
+
+.testimonial-title-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  margin-bottom: 50px;      /* Adjust margin as needed */
+}
+
+.section-title {
+  font-size: 36px;  /* Increase the size */
+  text-transform: uppercase;
+  color: #007bff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;  /* Adjust spacing */
+  display: inline-block;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.section-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Carousel Styling */
+.carousel-wrapper {
+  margin-top: 20px;
+}
+
+/* Testimonial Card Improvements */
+.testimonial-item {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial-item:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-item p {
+  font-size: 18px;
+  font-style: italic;
+  color: #555;
+}
+
+.testimonial-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 15px;
+  color: #007bff;
+}
+
+.testimonial-item h6 {
+  font-size: 16px;
+  color: #6c757d;
+}
+
+/* Quote Icon Styling */
+.testimonial-item .fa-quote-left {
+  color: #007bff;
+}
+

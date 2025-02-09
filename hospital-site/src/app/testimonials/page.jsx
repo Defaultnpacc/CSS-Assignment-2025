@@ -8,7 +8,7 @@ export const Testimonials = () => {
     {
       name: "Ethan",
       role: "Student",
-      text: "Recovered just in time for my exams! Really thankful for all the care and attention I've received by the staff.",
+      text: "Recovered just in time for my exams! Really thankful for all the care and attention I've received by the staff. Now that I’m feeling better, I’m ready to focus and give my best effort in the exams ahead!",
       img: "/testimonial-1.jpg"
     },
     {
@@ -41,17 +41,22 @@ export const Testimonials = () => {
         <link href="/css/bootstrap.min.css" rel="stylesheet" />
         <link href="/css/style.css" rel="stylesheet" />
       </Head>
+
       <Header />
-      <div className="container-fluid py-5">
-        <div className="container text-center">
-          <div className="text-center mx-auto mb-5" style={{ maxWidth: '500px' }}>
-            <h5 className="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
-            <h1 className="display-4">What Patients Say About Our Services</h1>
+
+      {/* Testimonial Title outside the container */}
+      <div className="testimonial-title-container">
+        <h5 className="section-title">Testimonials</h5>
+      </div>
+
+      {/* Centered Section */}
+      <div className="testimonial-container">
+        <div className="testimonial-content text-center">
+          <div className="heading-container">
+            <h1 className="section-heading">What Patients Say About Our Services</h1>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <CarouselComponent testimonials={testimonials} />
-            </div>
+          <div className="carousel-wrapper">
+            <CarouselComponent testimonials={testimonials} />
           </div>
         </div>
       </div>
