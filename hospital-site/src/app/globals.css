@@ -118,16 +118,17 @@ body {
   height: 400px; /* Adjust the height as needed */
   object-fit: cover;
   width: 100%;
+  margin-top: -40px;
 }
 
 .book-appointment-container {
-  margin-top: 360px; /* Adjust the margin as needed */
+  margin-top: 260px; /* Adjust the margin as needed */
 }
 
 .appointment-header {
   text-align: right; /* Align text to the right */
   margin-right: -550px; /* Adjust the margin as needed */
-  margin-top: 10px; /* Adjust the margin as needed */
+  margin-top: 20px; /* Adjust the margin as needed */
   font-size: 2.5rem;
   color: #1e3a8a;
 }
