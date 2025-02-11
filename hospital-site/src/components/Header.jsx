@@ -19,12 +19,12 @@ export default function Header() {
           <img src="/cell-phone-svgrepo-com.svg" alt="Phone" className="h-6 w-6" />
           <span>+65 8700 0921</span>
         </div>
-        <Link href="https://x.com/anandrdeshpande/with_replies" legacyBehavior>
+        <Link href="https://x.com/home?lang=en" legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
             <img src="/x_logo.svg" alt="X.com" className="h-6 w-6" />
           </a>
         </Link>
-        <Link href="https://www.linkedin.com/in/anand-deshpande-5788956a/?originalSubdomain=sg" legacyBehavior>
+        <Link href="https://www.linkedin.com/feed/" legacyBehavior>
           <a target="_blank" rel="noopener noreferrer">
             <img src="/LinkedIn_icon.svg" alt="LinkedIn" className="h-6 w-6" />
           </a>
